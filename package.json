@@ -1,0 +1,20 @@
+{
+  "name": "react-protector",
+  "version": "1.0.0",
+  "description": "Declarative react and react-router auth helpers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/iamandrewluca/react-protector"
+  },
+  "keywords": [
+    "react",
+    "router",
+    "authentication"
+  ],
+  "author": "Andrew Luca <thendrluca@gmail.com> (https://iamandrewluca.com)",
+  "license": "MIT"
+}
