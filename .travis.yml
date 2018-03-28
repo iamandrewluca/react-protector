@@ -1,0 +1,13 @@
+sudo: false
+language: node_js
+node_js:
+  - "node"
+before_script:
+  - npm run build
+cache:
+  directories:
+    - packages/react-protector/node_modules
+    - website/node_modules
+branches:
+  only:
+    - master
