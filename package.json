@@ -4,6 +4,7 @@
   "description": "Declarative react and react-router auth helpers",
   "main": "index.js",
   "scripts": {
+    "pages": "push-dir --dir=website/build --branch=gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,10 @@
     "authentication"
   ],
   "author": "Andrew Luca <thendrluca@gmail.com> (https://iamandrewluca.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "install": "^0.11.0",
+    "lerna": "^2.9.0",
+    "push-dir": "^0.4.1"
+  }
 }
