@@ -1,25 +1,11 @@
 {
-  "name": "react-protector",
-  "version": "1.0.0",
-  "description": "Declarative react and react-router auth helpers",
-  "main": "index.js",
+  "private": true,
+  "name": "react-protector-packages",
   "scripts": {
     "pages": "push-dir --dir=website/build --branch=gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "github.com/iamandrewluca/react-protector"
-  },
-  "keywords": [
-    "react",
-    "router",
-    "authentication"
-  ],
-  "author": "Andrew Luca <thendrluca@gmail.com> (https://iamandrewluca.com)",
-  "license": "MIT",
   "devDependencies": {
-    "install": "^0.11.0",
     "lerna": "^2.9.0",
     "push-dir": "^0.4.1"
   }
