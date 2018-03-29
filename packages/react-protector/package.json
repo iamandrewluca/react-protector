@@ -24,7 +24,7 @@
   "author": "Andrew Luca <thendrluca@gmail.com> (https://iamandrewluca.com)",
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=15",
+    "react": ">=16",
     "react-router": ">=4"
   },
   "devDependencies": {
