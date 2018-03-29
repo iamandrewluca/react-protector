@@ -4,7 +4,7 @@ import { ProtectionConsumer } from "./ProtectionContext";
 import RestrictedRoute from "./RestrictedRoute";
 import { normalizeRoles } from "./normalizeRoles";
 
-const ProtectedRoute = ({ roles }) => {
+const ProtectedRoute = ({ roles, ...rest }) => {
   roles = normalizeRoles(roles);
 
   return (
@@ -17,6 +17,7 @@ const ProtectedRoute = ({ roles }) => {
           <RestrictedRoute
             isRestricted={isRestricted}
             redirectPath={redirectPath}
+            {...rest}
           />
         );
       }}

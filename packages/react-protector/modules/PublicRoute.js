@@ -2,7 +2,7 @@ import React from "react";
 import { ProtectionConsumer } from "./ProtectionContext";
 import RestrictedRoute from "./RestrictedRoute";
 
-const PublicRoute = () => (
+const PublicRoute = props => (
   <ProtectionConsumer>
     {({ protection: isRestricted }) => {
       const redirectPath = "/";
@@ -10,6 +10,7 @@ const PublicRoute = () => (
         <RestrictedRoute
           isRestricted={isRestricted}
           redirectPath={redirectPath}
+          {...props}
         />
       );
     }}
