@@ -6,7 +6,7 @@
     "build": "node ./scripts/build.js",
     "clean": "lerna run clean",
     "precommit": "pretty-quick --staged",
-    "start": "cd website && npm start",
+    "start": "cd website && yarn start",
     "test": "lerna run test --stream",
     "pages": "push-dir --dir=website/build --branch=gh-pages"
   },

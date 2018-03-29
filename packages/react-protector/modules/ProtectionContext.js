@@ -6,8 +6,8 @@ const { Consumer: ProtectionConsumer, Provider } = createReactContext(
   "react-protector"
 );
 
-const ProtectionProvider = ({ children, ...rest }) => {
-  return <Provider value={rest}>{React.Children.only(children)}</Provider>;
+const ProtectionProvider = ({ protection, roles, ...rest }) => {
+  return <Provider value={{ protection, roles }} {...rest} />;
 };
 
 ProtectionProvider.propTypes = {
