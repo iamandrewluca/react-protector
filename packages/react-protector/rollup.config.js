@@ -6,11 +6,13 @@ import resolve from "rollup-plugin-node-resolve";
 
 const config = {
   input: "modules/index.js",
-  name: "ReactRouter",
+  name: "ReactProtector",
   globals: {
-    react: "React"
+    react: "React",
+    "prop-types": "PropTypes",
+    "react-router": "ReactRouter"
   },
-  external: ["react"],
+  external: ["react", "prop-types", "react-router"],
   plugins: [
     babel({
       exclude: "node_modules/**"

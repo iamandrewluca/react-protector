@@ -1,6 +1,6 @@
 import React from "react";
 import { ProtectionConsumer } from "./ProtectionContext";
-import intersection from "lodash/intersection";
+import intersection from "lodash.intersection";
 import { normalizeRoles } from "./normalizeRoles";
 
 const Protected = ({ children, roles }) => {

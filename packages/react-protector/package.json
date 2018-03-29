@@ -47,6 +47,7 @@
     "react": "^16.2.0",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
     "rollup": "^0.50.1",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.6",
@@ -57,7 +58,15 @@
   "files": [
     "es",
     "umd",
-    "index.js"
+    "index.js",
+    "normalizeRoles.js",
+    "Protected.js",
+    "ProtectedRoute.js",
+    "ProtectedRoutes.js",
+    "ProtectionContext.js",
+    "Public.js",
+    "PublicRoute.js",
+    "RestrictedRoute.js"
   ],
   "main": "index.js",
   "module": "es/index.js",
@@ -73,6 +82,7 @@
   },
   "dependencies": {
     "create-react-context": "^0.2.1",
+    "lodash.intersection": "^4.4.0",
     "prop-types": "^15.6.1"
   }
 }

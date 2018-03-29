@@ -1,5 +1,5 @@
 import React from "react";
-import intersection from "lodash/intersection";
+import intersection from "lodash.intersection";
 import { ProtectionConsumer } from "./ProtectionContext";
 import RestrictedRoute from "./RestrictedRoute";
 import { normalizeRoles } from "./normalizeRoles";
