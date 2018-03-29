@@ -6,13 +6,16 @@ const { Consumer: ProtectionConsumer, Provider } = createReactContext(
   "react-protector"
 );
 
-const ProtectionProvider = ({ protection, roles, ...rest }) => {
-  return <Provider value={{ protection, roles }} {...rest} />;
+const ProtectionProvider = ({ config, ...rest }) => {
+  return <Provider value={config} {...rest} />;
 };
 
 ProtectionProvider.propTypes = {
-  protection: PropTypes.bool.isRequired,
-  roles: PropTypes.array,
+  config: PropTypes.shape({
+    protection: PropTypes.bool.isRequired,
+    roles: PropTypes.array,
+    protectCallback: PropTypes.func
+  }).isRequired,
   children: PropTypes.node.isRequired
 };
 
