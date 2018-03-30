@@ -12,10 +12,30 @@ const ProtectionProvider = ({ config, children }) => {
 
 ProtectionProvider.propTypes = {
   config: PropTypes.shape({
-    protection: PropTypes.bool.isRequired,
+    // anything that is not null or undefined will give protection
+    protection: PropTypes.any,
+
+    // protection roles
     roles: PropTypes.array,
+
+    // called if no `protection`
     protectCallback: PropTypes.func,
-    placeholder: PropTypes.node
+
+    // additional guard, will receive `protection`
+    // returns null or path for redirect as string
+    guard: PropTypes.func,
+
+    // show when no `protection` and `callProtection`
+    placeholder: PropTypes.func,
+
+    // redirect from `PublicRoute` to `ProtectedRoute` route if has `protection`
+    publicRedirect: PropTypes.string.isRequired,
+
+    // redirect from `ProtectedRoute` to `PublicRoute` route if no `protection`
+    protectedRedirect: PropTypes.string.isRequired,
+
+    // redirect from `ProtectedRoute` with roles and/or guard to another `ProtectedRoute`
+    privateRedirect: PropTypes.string.isRequired
   }).isRequired,
   children: PropTypes.node.isRequired
 };

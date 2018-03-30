@@ -4,16 +4,13 @@ import RestrictedRoute from "./RestrictedRoute";
 
 const PublicRoute = props => (
   <ProtectionConsumer>
-    {({ protection: isRestricted }) => {
-      const redirectPath = "/";
-      return (
-        <RestrictedRoute
-          isRestricted={isRestricted}
-          redirectPath={redirectPath}
-          {...props}
-        />
-      );
-    }}
+    {({ protection: isRestricted, publicRedirect }) => (
+      <RestrictedRoute
+        isRestricted={isRestricted}
+        redirectPath={props.redirect || publicRedirect}
+        {...props}
+      />
+    )}
   </ProtectionConsumer>
 );
 
