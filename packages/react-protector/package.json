@@ -82,6 +82,7 @@
   },
   "dependencies": {
     "create-react-context": "^0.2.1",
+    "invariant": "^2.2.4",
     "lodash.intersection": "^4.4.0",
     "prop-types": "^15.6.1"
   }

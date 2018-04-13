@@ -1,67 +1,53 @@
 import React from "react";
-import intersection from "lodash/intersection";
-import { ProtectionConsumer } from "./ProtectionContext";
-import RestrictedRoute from "./RestrictedRoute";
-import { normalizeRoles } from "./normalizeRoles";
-import { Route } from "react-router";
-import { dynamicRender } from "./dynamicRender";
+import PropTypes from "prop-types";
+import ProtectionContext from "./ProtectionContext";
 
-const ProtectedRoute = props => {
-  const { roles, redirect, noGuard = false, callProtection } = props;
+const isEmptyChildren = children => React.Children.count(children) === 0;
 
-  const routeRoles = normalizeRoles(roles);
+class ProtectedRoute extends React.Component {
+  static propTypes = {
+    guard: PropTypes.func
+  };
 
-  return (
-    <ProtectionConsumer>
-      {config => {
-        const {
-          protection,
-          roles: allRoles,
-          protectCallback,
-          placeholder: Placeholder,
-          protectedRedirect,
-          guard
-        } = config;
+  getChildContext() {
+    const { guard } = this.props;
+    return { guard };
+  }
 
-        if (!protection && callProtection) {
-          protectCallback();
-          return <Route component={Placeholder} />;
-        }
+  renderChildren() {
+    const { match } = this.state;
+    const {
+      children,
+      component,
+      render,
+      router: { history, route, staticContext }
+    } = this.props;
+    const location = this.props.location || route.location;
+    const props = { match, location, history, staticContext };
 
-        if (protection && callProtection) {
-          return dynamicRender(props);
-        }
+    if (component) return match ? React.createElement(component, props) : null;
 
-        if (!protection) {
-          return (
-            <RestrictedRoute
-              isRestricted
-              redirectPath={redirect || protectedRedirect}
-              {...props}
-            />
-          );
-        }
+    if (render) return match ? render(props) : null;
 
-        const isRestricted =
-          !!routeRoles.length &&
-          intersection(allRoles, routeRoles).length === 0;
-        const guarded = !noGuard && guard && guard(protection);
-        const redirectPath = guarded || redirect || protectedRedirect;
+    if (typeof children === "function") return children(props);
 
-        // console.warn('isRestricted', isRestricted)
-        // console.warn('guarded', guarded)
-        // console.warn('redirectPath', redirectPath)
+    if (children && !isEmptyChildren(children))
+      return React.Children.only(children);
 
-        return (
-          <RestrictedRoute
-            isRestricted={isRestricted || guarded}
-            redirectPath={redirectPath}
-            {...props}
-          />
-        );
-      }}
-    </ProtectionConsumer>
-  );
-};
+    return null;
+  }
+
+  render() {
+    return (
+      <ProtectionContext.Consumer>
+        {value => (
+          <ProtectionContext.Provider value={this.getChildContext(value)}>
+            {this.renderChildren()}
+          </ProtectionContext.Provider>
+        )}
+      </ProtectionContext.Consumer>
+    );
+  }
+}
 
 export default ProtectedRoute;
